@@ -93,9 +93,13 @@ extension ManagedGroup {
             for managedWord in managedWords {
                 processedWords.append(managedWord.toWord())
             }
+
+            processedWords = processedWords.sorted {
+                $0.order < $1.order
+            }
         }
 
-        let isVailableVisibilityType = VisibilityType(rawValue: visibilityType ?? "") ?? .private
+         let isVailableVisibilityType = VisibilityType(rawValue: visibilityType ?? "") ?? .private
 
         let group = Group(
             title: title ?? "",

@@ -243,7 +243,7 @@ class AddFolderViewController: UIViewController {
             visibilityType: visibilityButton.isSelected ? .public : .private,
             identifier: UUID(),
             words: [],
-            order: Int16(order == 0 ? 0 : order - 1)
+            order: Int16(order == 0 ? 0 : order)
         )
 
         VocaManager.shared.insert(group: newGroup) { [weak self] in
