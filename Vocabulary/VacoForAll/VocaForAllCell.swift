@@ -129,7 +129,9 @@ class VocaForAllCell: UICollectionViewCell {
     }
 
     func configureLayout() {
-        contentView.backgroundColor = .white
+        clipsToBounds = false
+        backgroundColor = .clear
+
         contentView.addSubview(baseView)
         baseView.addSubview(vocaImageView)
         baseView.addSubview(numberView)
