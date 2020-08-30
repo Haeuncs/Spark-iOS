@@ -106,7 +106,7 @@ class MyVocaViewController: UIViewController {
 
         groupNameCollectionView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view)
         }
 
     }

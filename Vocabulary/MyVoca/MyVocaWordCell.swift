@@ -139,6 +139,9 @@ class MyVocaWordCell: UICollectionViewCell {
     }
 
     func configureLayout() {
+        clipsToBounds = false
+        backgroundColor = .clear
+
         contentView.addSubview(editButton)
         contentView.addSubview(textContentView)
         contentView.addSubview(imageView)

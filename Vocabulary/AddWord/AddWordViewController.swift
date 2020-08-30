@@ -204,7 +204,8 @@ class AddWordViewController: UIViewController {
     }
     
     @objc func addWordButtonTap(_ sender: Any) {
-        let word = Word(korean: self.korTextField.text, english: self.engTextField.text, image: self.wordImageView.image?.jpegData(compressionQuality: 0.8), identifier: UUID())
+        let orderCount = newGroup?.words.count ?? 0 == 0 ? 0 : (newGroup?.words.count)! - 1
+        let word = Word(korean: self.korTextField.text, english: self.engTextField.text, image: self.wordImageView.image?.jpegData(compressionQuality: 0.8), identifier: UUID(), order: Int16(orderCount))
         
         self.newGroup?.words.append(word)
         
