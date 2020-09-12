@@ -1649,7 +1649,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = L47YWQ7AFX;
 				INFOPLIST_FILE = PoingVocaSubsystemTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1661,7 +1661,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/포잉포잉.app/포잉포잉";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Poing.app/Poing";
 			};
 			name = Debug;
 		};
@@ -1670,7 +1670,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = L47YWQ7AFX;
 				INFOPLIST_FILE = PoingVocaSubsystemTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1682,7 +1682,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/포잉포잉.app/포잉포잉";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Poing.app/Poing";
 			};
 			name = Release;
 		};
