@@ -16,7 +16,7 @@ enum EveryVocabularyService {
 
 extension EveryVocabularyService: TargetType {
     var baseURL: URL {
-        URL(string: "http://poingpoing.cf/")!
+        URL(string: ServerURL.base.rawValue)!
     }
 
     var path: String {

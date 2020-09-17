@@ -13,6 +13,7 @@ import SnapKit
 import KeyboardObserver
 import RxSwift
 import RxCocoa
+import Moya
 
 class AddFolderViewController: UIViewController {
     public enum Constant {
@@ -175,7 +176,6 @@ class AddFolderViewController: UIViewController {
         }
 
         confirmButton.snp.makeConstraints { (make) in
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(hasTopNotch ? 0 : -16)
             make.centerX.equalTo(view)
             make.height.equalTo(Constant.Confirm.height)
             make.width.greaterThanOrEqualTo(Constant.Confirm.minWidth)
@@ -238,6 +238,16 @@ class AddFolderViewController: UIViewController {
     }
 
     @objc func confirmDidTap(_ sender: UIButton) {
+        if visibilityButton.isSelected {
+            addFolderForRequest(title: textFieldView.textField.text ?? "이름 없음") { [weak self] in
+                self?.addFolderForCoreData()
+            }
+        } else {
+            addFolderForCoreData()
+        }
+    }
+
+    func addFolderForCoreData() {
         let order = VocaManager.shared.groups?.count ?? 0
         let newGroup = Group(
             title: textFieldView.textField.text ?? "이름 없음",
@@ -250,5 +260,22 @@ class AddFolderViewController: UIViewController {
         VocaManager.shared.insert(group: newGroup) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+    }
+
+    func addFolderForRequest(
+        title: String,
+        successHandler: @escaping (() -> Void)
+    ) {
+        FolderController.shared.addFolder(name: title)
+            .subscribe { (response) in
+                if response.element?.statusCode == 200 {
+                    // success
+                    successHandler()
+                }
+                else {
+                    // error
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

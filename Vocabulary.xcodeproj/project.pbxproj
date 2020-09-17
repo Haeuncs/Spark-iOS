@@ -76,6 +76,10 @@
 		7D7B4B0024FAAD16004F7493 /* PoingVocaSubsystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB4AEA24DC2DF2008812CD /* PoingVocaSubsystem.framework */; };
 		7D7B4B0124FAAD16004F7493 /* PoingVocaSubsystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB4AEA24DC2DF2008812CD /* PoingVocaSubsystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D7F602424F29226007021C6 /* LoadCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F602324F29226007021C6 /* LoadCoreDataManager.swift */; };
+		7D8029762512744A0057934E /* FolderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8029752512744A0057934E /* FolderResponse.swift */; };
+		7D802978251274B90057934E /* FolderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D802977251274B90057934E /* FolderService.swift */; };
+		7D80297A251277E90057934E /* FolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D802979251277E90057934E /* FolderController.swift */; };
+		7D80297C251281810057934E /* ServerURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D80297B251281810057934E /* ServerURL.swift */; };
 		7D88184E24F6AA8A005A157E /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D88184D24F6AA8A005A157E /* AccentButton.swift */; };
 		7D88185224F6C960005A157E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D88185124F6C960005A157E /* String+.swift */; };
 		7D88185424F7609E005A157E /* SettingMyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D88185324F7609E005A157E /* SettingMyInfoCell.swift */; };
@@ -280,6 +284,12 @@
 		7D72ABEB24F4007200A01BCC /* VocaForAllDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaForAllDetailViewController.swift; sourceTree = "<group>"; };
 		7D72ABED24F404BD00A01BCC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		7D7F602324F29226007021C6 /* LoadCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCoreDataManager.swift; sourceTree = "<group>"; };
+		7D8029752512744A0057934E /* FolderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderResponse.swift; sourceTree = "<group>"; };
+		7D802977251274B90057934E /* FolderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderService.swift; sourceTree = "<group>"; };
+		7D802979251277E90057934E /* FolderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderController.swift; sourceTree = "<group>"; };
+		7D80297B251281810057934E /* ServerURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURL.swift; sourceTree = "<group>"; };
+		7D802984251387EA0057934E /* test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
+		7D802985251387EA0057934E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D88184D24F6AA8A005A157E /* AccentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccentButton.swift; path = PoingDesignSystem/AccentButton.swift; sourceTree = SOURCE_ROOT; };
 		7D88185124F6C960005A157E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		7D88185324F7609E005A157E /* SettingMyInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoCell.swift; sourceTree = "<group>"; };
@@ -501,6 +511,7 @@
 				7DDB4AD324DC2D6B008812CD /* PoingDesignSystemTests */,
 				7DDB4AEB24DC2DF2008812CD /* PoingVocaSubsystem */,
 				7DDB4AF824DC2DF2008812CD /* PoingVocaSubsystemTests */,
+				7D802983251387EA0057934E /* test */,
 				7D276DFE24BE05AF00CA4554 /* Products */,
 				DCBEF7D8D78A53C7ED1BCF92 /* Pods */,
 				7C5637AC6CE1EDE31F81695F /* Frameworks */,
@@ -577,6 +588,9 @@
 				7D5C34DC25123C7600A9933F /* EveryVocaResponse.swift */,
 				7D5C34E12512408200A9933F /* EveryVocabularyController.swift */,
 				7D5C34E3251241B300A9933F /* WordResponse.swift */,
+				7D8029752512744A0057934E /* FolderResponse.swift */,
+				7D802977251274B90057934E /* FolderService.swift */,
+				7D802979251277E90057934E /* FolderController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -585,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				7D5C34DF2512402700A9933F /* BaseManager.swift */,
+				7D80297B251281810057934E /* ServerURL.swift */,
 			);
 			path = Utills;
 			sourceTree = "<group>";
@@ -611,6 +626,15 @@
 				7D72ABE924F3FBFF00A01BCC /* DummyData.swift */,
 			);
 			path = DummyData;
+			sourceTree = "<group>";
+		};
+		7D802983251387EA0057934E /* test */ = {
+			isa = PBXGroup;
+			children = (
+				7D802984251387EA0057934E /* test.h */,
+				7D802985251387EA0057934E /* Info.plist */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 		7DDB4AC624DC2D6B008812CD /* PoingDesignSystem */ = {
@@ -1308,9 +1332,11 @@
 				7D5C34E72512608E00A9933F /* EveryVocaResponse.swift in Sources */,
 				7D5C34E62512608900A9933F /* EveryVocabularyService.swift in Sources */,
 				7D5C34EA2512609A00A9933F /* BaseManager.swift in Sources */,
+				7D80297C251281810057934E /* ServerURL.swift in Sources */,
 				7DDB4B2024DC2E6E008812CD /* ManagedWord+CoreDataClass.swift in Sources */,
 				7DDB4B1D24DC2E6E008812CD /* ManagedGroup+CoreDataClass.swift in Sources */,
 				7DE758D224DDBB0E001922C6 /* Notification.Name+.swift in Sources */,
+				7D80297A251277E90057934E /* FolderController.swift in Sources */,
 				7D7F602424F29226007021C6 /* LoadCoreDataManager.swift in Sources */,
 				7D4081BD24F3EA49004FDC60 /* VocaDownloadAgent.swift in Sources */,
 				7D5C34E92512609500A9933F /* WordResponse.swift in Sources */,
@@ -1318,6 +1344,8 @@
 				7DDB4B1E24DC2E6E008812CD /* VocaCoreDataManager.swift in Sources */,
 				7D72ABEA24F3FBFF00A01BCC /* DummyData.swift in Sources */,
 				7DDB4B2124DC2E6E008812CD /* ManagedGroup+CoreDataProperties.swift in Sources */,
+				7D8029762512744A0057934E /* FolderResponse.swift in Sources */,
+				7D802978251274B90057934E /* FolderService.swift in Sources */,
 				7D5C34E82512609100A9933F /* EveryVocabularyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

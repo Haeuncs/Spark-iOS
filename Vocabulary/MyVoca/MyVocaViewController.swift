@@ -84,7 +84,6 @@ class MyVocaViewController: UIViewController {
             
         case .vocaForAll:
             configureVocaForAllRx()
-            vocaForAllViewModel.inputs.fetchVocaForAllData()
         }
         
         NotificationCenter.default.addObserver(
@@ -127,7 +126,8 @@ class MyVocaViewController: UIViewController {
     }
     
     func configureVocaForAllRx() {
-        vocaForAllViewModel.outputs.vocaForAllList
+
+        Observable.combineLatest(vocaForAllViewModel.outputs.vocaForAllList, vocaForAllViewModel.outputs.myFolderList)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (_) in
                 self?.groupNameCollectionView.reloadData()
@@ -137,7 +137,6 @@ class MyVocaViewController: UIViewController {
     @objc
     func vocaDataChanged() {
         viewModel.input.fetchGroups()
-        vocaForAllViewModel.inputs.fetchVocaForAllData()
     }
 }
 
@@ -148,7 +147,13 @@ extension MyVocaViewController: UICollectionViewDataSource {
             let wordCount = viewModel.output.words.value.count
             return wordCount == 0 ? 1 : wordCount
         case .vocaForAll:
-            return vocaForAllViewModel.outputs.vocaForAllList.value.count
+            let type = vocaForAllViewModel.inputs.orderType.value
+            switch type {
+            case .popular, .recent:
+                return vocaForAllViewModel.outputs.vocaForAllList.value.count
+            case .sharedMyVoca:
+                return vocaForAllViewModel.outputs.myFolderList.value.count
+            }
         }
     }
     
@@ -180,8 +185,14 @@ extension MyVocaViewController: UICollectionViewDataSource {
                 ) as? VocaForAllCell else {
                     return UICollectionViewCell()
             }
-            
-            cell.configure(content: vocaForAllViewModel.outputs.vocaForAllList.value[indexPath.item])
+
+            let type = vocaForAllViewModel.inputs.orderType.value
+            switch type {
+            case .popular, .recent:
+                cell.configure(content: vocaForAllViewModel.outputs.vocaForAllList.value[indexPath.item])
+            case .sharedMyVoca:
+                cell.configure(folder: vocaForAllViewModel.outputs.myFolderList.value[indexPath.row])
+            }
             return cell
         }
     }
@@ -218,11 +229,23 @@ extension MyVocaViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard currentViewType == .vocaForAll else { return }
 
-        let selectedFolder = vocaForAllViewModel.outputs.vocaForAllList.value[indexPath.row]
-        let wordViewModel = WordViewModel(content: selectedFolder)
-        let wordView = VocaForAllDetailViewController(viewModel: wordViewModel)
+        let type = vocaForAllViewModel.inputs.orderType.value
 
-        self.navigationController?.pushViewController(wordView, animated: true)
+        switch type {
+        case .popular, .recent:
+            let selectedFolder = vocaForAllViewModel.outputs.vocaForAllList.value[indexPath.row]
+            let wordViewModel = WordViewModel(content: selectedFolder)
+            let wordView = VocaForAllDetailViewController(viewModel: wordViewModel)
+
+            navigationController?.pushViewController(wordView, animated: true)
+
+        case .sharedMyVoca:
+
+            let folder = vocaForAllViewModel.outputs.myFolderList.value[indexPath.row]
+            vocaForAllViewModel.inputs.deleteFolder(id: folder.id) {
+                // alert
+            }
+        }
     }
 }
 
@@ -261,7 +284,7 @@ extension MyVocaViewController: UICollectionViewDelegateFlowLayout, UICollection
 
 extension MyVocaViewController: MyVocaViewControllerDelegate {
     func myVocaGroupReusableView(didTapOrderType type: VocaForAllOrderType, view: MyVocaGroupReusableView) {
-        
+        vocaForAllViewModel.inputs.orderType.accept(type)
     }
     
     func myVocaViewController(didTapEditGroupButton button: UIButton) {
