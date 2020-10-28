@@ -48,7 +48,7 @@ class AppleLoginButton: UIButton {
     lazy var loginLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Apple로 시작하기"
+        label.text = "Apple로 계속하기"
         label.textColor = .midnight
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
